@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Preparación para la Llamada · Método Vatio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carbon: #FBFAF7;
+    --carbon-2: #F1EFE9;
+    --ivory: #1A1D1B;
+    --ivory-dim: #6F6B62;
+    --vatio: #1F9E74;
+    --vatio-deep: #156A4E;
+    --line: rgba(26,29,27,0.08);
+    --line-strong: rgba(26,29,27,0.14);
+    --serif: 'Poppins', sans-serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  *{margin:0; padding:0; box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background: var(--carbon);
+    color: var(--ivory);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index: 2;
+    opacity:0.02;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  .container{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ============ TOP BAR ============ */
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(251,250,247,0.78);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+  }
+  .brand{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: var(--ivory);
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .brand-mark{
+    width: 22px; height: 22px;
+    border: 1.5px solid var(--vatio);
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .brand-mark::after{
+    content:'';
+    width: 6px; height: 6px;
+    background: var(--vatio);
+    border-radius: 50%;
+  }
+  .brand small{
+    display:block;
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ivory-dim);
+    font-weight: 500;
+    margin-top: 1px;
+  }
+  .progress-pill{
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ivory-dim);
+    border: 1px solid var(--line-strong);
+    border-radius: 100px;
+    padding: 7px 14px;
+    font-weight: 500;
+  }
+  .progress-pill strong{ color: var(--vatio); font-weight: 600; }
+
+  /* ============ HERO ============ */
+  .hero{
+    padding: 86px 0 64px;
+    position: relative;
+  }
+  .hero-eyebrow{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--vatio);
+    font-weight: 600;
+    margin-bottom: 28px;
+    opacity:0;
+    animation: fadeUp 0.8s ease forwards;
+    animation-delay: 0.05s;
+  }
+  .hero-eyebrow .dash{
+    width: 36px; height: 1px; background: var(--vatio);
+  }
+  h1{
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    color: var(--ivory);
+    opacity:0;
+    animation: fadeUp 0.9s ease forwards;
+    animation-delay: 0.15s;
+  }
+  h1 em{
+    font-style: normal;
+    color: var(--vatio);
+    font-weight: 700;
+  }
+  .hero-lede{
+    max-width: 620px;
+    margin-top: 28px;
+    font-size: 1.08rem;
+    color: var(--ivory-dim);
+    font-weight: 300;
+    opacity:0;
+    animation: fadeUp 0.9s ease forwards;
+    animation-delay: 0.28s;
+  }
+  .hero-lede strong{ color: var(--ivory); font-weight: 600; }
+
+  .hero-callout{
+    margin-top: 40px;
+    border-left: 2px solid var(--vatio);
+    padding: 18px 24px;
+    background: linear-gradient(90deg, rgba(31,158,116,0.08), transparent);
+    border-radius: 0 10px 10px 0;
+    font-size: 0.95rem;
+    color: var(--ivory);
+    opacity:0;
+    animation: fadeUp 0.9s ease forwards;
+    animation-delay: 0.4s;
+  }
+  .hero-callout b{ color: var(--vatio); }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(18px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* ============ SECTION GENERIC ============ */
+  section{
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+  }
+  .section-head{
+    display:flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+  .section-num{
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--vatio);
+    font-weight: 600;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    width: 38px; height: 38px;
+    min-width: 38px;
+    display:flex; align-items:center; justify-content:center;
+    margin-top: 4px;
+  }
+  h2{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .section-sub{
+    color: var(--ivory-dim);
+    font-size: 0.98rem;
+    margin-top: 10px;
+    max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* ============ INDICACIONES (numbered list) ============ */
+  .rules{
+    display:flex;
+    flex-direction: column;
+    gap: 0;
+    margin-left: 56px;
+  }
+  .rule{
+    display:flex;
+    gap: 22px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+  .rule:first-child{ border-top: none; padding-top: 0; }
+  .rule-index{
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--vatio-deep);
+    font-weight: 600;
+    min-width: 44px;
+    line-height: 1.3;
+  }
+  .rule-body strong{
+    display:block;
+    color: var(--ivory);
+    font-size: 1.02rem;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .rule-body span{
+    color: var(--ivory-dim);
+    font-size: 0.95rem;
+    font-weight: 300;
+  }
+
+  /* ============ VIDEO BLOCK ============ */
+  .video-tag{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--vatio);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .video-tag::before{
+    content:'';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--vatio);
+    box-shadow: 0 0 0 4px rgba(31,158,116,0.16);
+  }
+  .video-frame{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 16px;
+    border: 1px solid var(--line-strong);
+    background:
+      linear-gradient(155deg, rgba(31,158,116,0.05), rgba(0,0,0,0)),
+      var(--carbon-2);
+    overflow: hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom: 14px;
+    box-shadow: 0 12px 32px -16px rgba(26,29,27,0.14);
+  }
+  .video-frame.portrait{ aspect-ratio: 9/16; max-width: 360px; margin: 0 auto 14px; }
+  .video-frame video,
+  .video-frame iframe{
+    width:100%; height:100%;
+    border:0;
+    object-fit: cover;
+  }
+  .video-placeholder{
+    text-align:center;
+    color: var(--ivory-dim);
+    padding: 24px;
+  }
+  .video-placeholder .play{
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    display:flex; align-items:center; justify-content:center;
+    margin: 0 auto 16px;
+    transition: all 0.3s ease;
+  }
+  .video-frame:hover .play{
+    border-color: var(--vatio);
+    background: rgba(31,158,116,0.08);
+    transform: scale(1.06);
+  }
+  .video-placeholder .play svg{ fill: var(--vatio); width: 18px; }
+  .video-placeholder .label{
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ivory);
+    margin-bottom: 4px;
+  }
+  .video-placeholder .meta{
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ivory-dim);
+    opacity: 0.7;
+  }
+
+  /* YouTube click-to-play */
+  .yt-frame{
+    cursor: pointer;
+    padding: 0;
+  }
+  .yt-thumb{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.01);
+    transition: transform 0.6s ease, filter 0.6s ease;
+    filter: saturate(1.02);
+  }
+  .yt-frame:hover .yt-thumb{
+    transform: scale(1.05);
+  }
+  .yt-overlay{
+    position: absolute;
+    inset: 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(180deg, rgba(26,29,27,0.05) 0%, rgba(26,29,27,0.55) 100%);
+    transition: background 0.4s ease;
+  }
+  .yt-frame:hover .yt-overlay{
+    background: linear-gradient(180deg, rgba(26,29,27,0.1) 0%, rgba(26,29,27,0.65) 100%);
+  }
+  .yt-overlay .video-placeholder{
+    color: var(--carbon);
+  }
+  .yt-overlay .video-placeholder .label{
+    color: #FFFFFF;
+    font-weight: 600;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  }
+  .yt-overlay .video-placeholder .meta{
+    color: rgba(255,255,255,0.82);
+    opacity: 1;
+  }
+  .yt-overlay .play{
+    background: rgba(255,255,255,0.92);
+    border: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .yt-overlay .play svg{ fill: var(--vatio); }
+  .yt-frame:hover .yt-overlay .play{
+    background: var(--vatio);
+    transform: scale(1.08);
+  }
+  .yt-frame:hover .yt-overlay .play svg{ fill: #FFFFFF; }
+  .video-frame.yt-active{
+    cursor: default;
+  }
+  .video-frame.yt-active .yt-thumb,
+  .video-frame.yt-active .yt-overlay{
+    display:none;
+  }
+  .video-frame iframe.yt-iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+  }
+  .video-caption{
+    font-size: 0.92rem;
+    color: var(--ivory-dim);
+    font-weight: 300;
+    max-width: 560px;
+  }
+  .video-caption strong{ color: var(--ivory); font-weight: 600;}
+
+  /* ============ ABOUT GENESIS ============ */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .about-portrait{
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 14px;
+    overflow:hidden;
+    border: 1px solid var(--line-strong);
+    position: relative;
+    box-shadow: 0 12px 32px -18px rgba(26,29,27,0.18);
+  }
+  .about-portrait img{
+    width:100%; height:100%;
+    object-fit: cover;
+    display:block;
+    filter: saturate(1.05) contrast(1.02);
+  }
+  .about-portrait::after{
+    content:'';
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 60%, rgba(251,250,247,0.6) 100%);
+  }
+  .about-text p{
+    color: var(--ivory-dim);
+    font-size: 0.98rem;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+  .about-text strong{ color: var(--ivory); font-weight: 600; }
+  .stat-row{
+    display:flex;
+    gap: 36px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .stat{
+    display:flex;
+    flex-direction: column;
+  }
+  .stat .num{
+    font-family: var(--serif);
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--vatio);
+    line-height: 1;
+  }
+  .stat .lab{
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ivory-dim);
+    margin-top: 6px;
+  }
+
+  @media (max-width: 720px){
+    .about-grid{ grid-template-columns: 1fr; }
+    .about-portrait{ max-width: 220px; margin: 0 auto; }
+  }
+
+  /* ============ FAQ ACCORDION ============ */
+  .faq-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .faq-item{
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item:first-child{ border-top: 1px solid var(--line); }
+  .faq-q{
+    width: 100%;
+    text-align:left;
+    background: none;
+    border: none;
+    color: var(--ivory);
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 22px 0;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: color 0.25s ease;
+  }
+  .faq-q:hover{ color: var(--vatio); }
+  .faq-icon{
+    flex-shrink:0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    display:flex; align-items:center; justify-content:center;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .faq-icon::before, .faq-icon::after{
+    content:'';
+    position:absolute;
+    background: var(--ivory-dim);
+    transition: all 0.3s ease;
+  }
+  .faq-icon::before{ width: 10px; height: 1px; }
+  .faq-icon::after{ width: 1px; height: 10px; }
+  .faq-item.open .faq-icon{ border-color: var(--vatio); background: rgba(31,158,116,0.08); }
+  .faq-item.open .faq-icon::after{ height: 0; }
+  .faq-item.open .faq-icon::before, .faq-item.open .faq-icon::after{ background: var(--vatio); }
+  .faq-a{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .faq-a-inner{
+    padding: 0 0 26px;
+    padding-right: 48px;
+    color: var(--ivory-dim);
+    font-size: 0.96rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .faq-a-inner strong{ color: var(--ivory); font-weight: 600; }
+
+  /* ============ TESTIMONIOS ============ */
+  .testi-intro{
+    color: var(--ivory-dim);
+    font-size: 0.98rem;
+    font-weight: 300;
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+  .testi-video-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 720px){
+    .testi-video-grid{ grid-template-columns: 1fr; }
+  }
+  .testi-video .video-frame{ aspect-ratio: 4/5; }
+  .testi-video-name{
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ivory);
+    margin-bottom: 2px;
+  }
+  .testi-video-result{
+    font-size: 0.85rem;
+    color: var(--vatio);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  /* image testimonial wall */
+  .testi-wall{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .testi-card{
+    border-radius: 14px;
+    overflow:hidden;
+    border: 1px solid var(--line-strong);
+    background: var(--carbon-2);
+    cursor: zoom-in;
+    position: relative;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 8px 24px -16px rgba(26,29,27,0.12);
+  }
+  .testi-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--vatio);
+    box-shadow: 0 16px 32px -16px rgba(26,29,27,0.18);
+  }
+  .testi-card img{
+    width: 100%;
+    display:block;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .testi-card .tag{
+    position:absolute;
+    bottom: 12px; left: 12px; right: 12px;
+    font-size: 0.78rem;
+    color: var(--ivory);
+    background: rgba(251,250,247,0.78);
+    backdrop-filter: blur(6px);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    font-weight: 500;
+  }
+  @media (max-width: 720px){
+    .testi-wall{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* team mosaic */
+  .team-mosaic{
+    margin-top: 48px;
+  }
+  .team-mosaic-tag{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--vatio);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .team-mosaic-tag::before{
+    content:'';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--vatio);
+    box-shadow: 0 0 0 4px rgba(31,158,116,0.16);
+  }
+  .mosaic-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+    height: 460px;
+  }
+  .mosaic-item{
+    border-radius: 14px;
+    overflow:hidden;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 10px 28px -18px rgba(26,29,27,0.16);
+    position: relative;
+  }
+  .mosaic-item img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display:block;
+    transition: transform 0.6s ease;
+  }
+  .mosaic-item:hover img{
+    transform: scale(1.05);
+  }
+  .mosaic-item.big{
+    grid-row: 1 / 3;
+  }
+  .mosaic-item.tall{
+    grid-row: 1 / 3;
+  }
+  .team-mosaic-cap{
+    margin-top: 18px;
+    font-size: 0.92rem;
+    color: var(--ivory-dim);
+    font-weight: 300;
+    max-width: 560px;
+  }
+
+  @media (max-width: 720px){
+    .mosaic-grid{
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 220px 220px 220px;
+      height: auto;
+    }
+    .mosaic-item.big{ grid-column: 1 / 3; grid-row: 1; }
+    .mosaic-item.tall{ grid-row: 3; }
+  }
+
+  /* lightbox */
+  .lightbox{
+    position: fixed; inset:0;
+    background: rgba(251,250,247,0.94);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none;
+    transition: opacity 0.3s ease;
+    padding: 40px;
+  }
+  .lightbox.active{ opacity:1; pointer-events:all; }
+  .lightbox img{
+    max-width: 90vw; max-height: 88vh;
+    border-radius: 10px;
+    border: 1px solid var(--line-strong);
+  }
+  .lightbox-close{
+    position:absolute; top: 28px; right: 32px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    background: rgba(251,250,247,0.7);
+    color: var(--ivory);
+    font-size: 1.2rem;
+    display:flex; align-items:center; justify-content:center;
+    cursor: pointer;
+  }
+
+  /* ============ CHECKLIST ============ */
+  .checklist{
+    display:flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .check-item{
+    display:flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    background: var(--carbon-2);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+  }
+  .check-item:hover{ border-color: var(--vatio); }
+  .check-item.done{
+    border-color: var(--vatio-deep);
+    background: rgba(31,158,116,0.05);
+  }
+  .check-box{
+    width: 24px; height: 24px;
+    min-width: 24px;
+    border-radius: 6px;
+    border: 1.5px solid var(--line-strong);
+    display:flex; align-items:center; justify-content:center;
+    transition: all 0.25s ease;
+  }
+  .check-item.done .check-box{
+    background: var(--vatio);
+    border-color: var(--vatio);
+  }
+  .check-box svg{
+    width: 13px; opacity:0; transform: scale(0.5);
+    transition: all 0.2s ease;
+  }
+  .check-item.done .check-box svg{ opacity:1; transform: scale(1); }
+  .check-text{
+    font-size: 0.96rem;
+    color: var(--ivory);
+    font-weight: 500;
+    transition: color 0.25s ease;
+  }
+  .check-item.done .check-text{
+    color: var(--ivory-dim);
+    text-decoration: line-through;
+  }
+  .check-progress{
+    margin-top: 24px;
+    display:flex;
+    align-items:center;
+    gap: 16px;
+  }
+  .check-bar{
+    flex:1;
+    height: 4px;
+    background: var(--line-strong);
+    border-radius: 4px;
+    overflow:hidden;
+  }
+  .check-bar-fill{
+    height:100%;
+    width: 0%;
+    background: var(--vatio);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+  .check-progress-label{
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ivory-dim);
+    white-space: nowrap;
+  }
+
+  /* ============ FOOTER / CTA ============ */
+  footer{
+    padding: 70px 0 60px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  .footer-quote{
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 300;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--ivory);
+    max-width: 620px;
+    margin: 0 auto 28px;
+    line-height: 1.5;
+  }
+  .footer-quote span{ color: var(--vatio); }
+  .footer-meta{
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ivory-dim);
+  }
+
+  /* scroll reveal */
+  .reveal{
+    opacity:0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 600px){
+    .rules{ margin-left: 0; }
+    .rule{ gap: 14px; }
+    .rule-index{ font-size: 1.3rem; min-width: 32px; }
+    .faq-a-inner{ padding-right: 0; }
+    .section-head{ gap: 12px; }
+    h1{ font-size: clamp(2.2rem, 9vw, 3.2rem); }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        Método Vatio
+        <small>Nutrición en Ciclismo</small>
+      </div>
+    </div>
+    <div class="progress-pill">Guía <strong>Pre-Llamada</strong></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none; padding-top:86px;">
+    <div class="hero-eyebrow"><span class="dash"></span> Evaluación gratuita · Método Vatio</div>
+    <h1>Guía de preparación<br>para <em>la llamada</em></h1>
+    <p class="hero-lede">
+      Ciclista, felicidades por agendar tu evaluación gratuita. Esta videollamada está diseñada específicamente para analizar tu situación, objetivos y metas personales. Te explicaremos cómo <strong>Génesis</strong> puede ayudarte a alcanzar tus objetivos con el programa <strong>Método Vatio</strong>.
+    </p>
+    <div class="hero-callout">
+      Por favor, lee la información que encontrarás a continuación. <b>Es obligatorio leer esto para que llegues a la llamada con claridad total</b> — de lo contrario, no podremos tomarla.
+    </div>
+  </section>
+
+  <!-- INDICACIONES -->
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <div>
+        <h2>Indicaciones importantes</h2>
+        <p class="section-sub">Para que aproveches al máximo esta oportunidad y podamos darte una sesión de calidad, por favor toma en cuenta lo siguiente.</p>
+      </div>
+    </div>
+
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-index">01</div>
+        <div class="rule-body">
+          <strong>No atendemos llamadas desde el carro.</strong>
+          <span>Aunque no estés manejando, suele haber mala conexión. Si ese será tu caso, avísanos para reprogramar.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-index">02</div>
+        <div class="rule-body">
+          <strong>La sesión será por Zoom (45–60 min).</strong>
+          <span>Asegúrate de tener este espacio disponible y la aplicación instalada antes de la llamada.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-index">03</div>
+        <div class="rule-body">
+          <strong>El enlace te llegará por correo y también por WhatsApp/Instagram.</strong>
+          <span>Revisa tus mensajes; minutos antes lo volveremos a enviar.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-index">04</div>
+        <div class="rule-body">
+          <strong>Puntualidad.</strong>
+          <span>Si no te conectas en los primeros 15 minutos, no podremos reprogramar porque hay otros ciclistas esperando.</span>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-index">05</div>
+        <div class="rule-body">
+          <strong>Testimonios y FAQ al final de la página.</strong>
+          <span>Si algo no queda claro, abajo tendrás preguntas frecuentes y testimonios; si aún te queda duda lo resolveremos juntos durante la sesión.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO PRINCIPAL -->
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <div>
+        <h2>Mira este video antes de tu llamada</h2>
+        <p class="section-sub">8 minutos para entender todo lo que necesitas saber antes de conversar con nuestro equipo.</p>
+      </div>
+    </div>
+
+    <div class="video-tag">Video obligatorio · 8 min</div>
+    <div class="video-frame yt-frame" data-yt="uhdiXYeQw-4">
+      <img class="yt-thumb" src="https://img.youtube.com/vi/uhdiXYeQw-4/maxresdefault.jpg" alt="Cómo perder grasa y mejorar el rendimiento en la bici al mismo tiempo">
+      <div class="yt-overlay">
+        <div class="video-placeholder">
+          <div class="play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="label">Cómo perder grasa y mejorar el rendimiento en la bici al mismo tiempo</div>
+          <div class="meta">Génesis Ceciliano · Reproducir video</div>
+        </div>
+      </div>
+    </div>
+    <p class="video-caption">
+      <strong>Importante:</strong> este video resume los conceptos clave del Método Vatio y responde la mayoría de las dudas más comunes antes de iniciar la evaluación.
+    </p>
+  </section>
+
+  <!-- SOBRE GÉNESIS -->
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <div>
+        <h2>Sobre Génesis Ceciliano</h2>
+        <p class="section-sub">Nutricionista profesional, ciclista y creadora del Método Vatio.</p>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-portrait">
+        <img src="assets/genesis-portrait.jpg" alt="Génesis Ceciliano en bicicleta">
+      </div>
+      <div class="about-text">
+        <p>
+          <strong>Génesis es nutricionista profesional y ciclista, fundadora de Nutrición en Ciclismo y creadora del Método Vatio</strong>, una metodología que une evidencia científica y experiencia real en la bicicleta. En los últimos años, ha acompañado a más de <strong>400 ciclistas</strong> de Latinoamérica a perder grasa, mejorar potencia y optimizar su rendimiento con estrategias claras y aplicables a la vida real.
+        </p>
+        <p>
+          El <strong>Método Vatio</strong> nace de años de estudio en nutrición deportiva y de su propia trayectoria como ciclista. Cada protocolo ha sido validado en ruta con ciclistas de distintos niveles, convirtiéndolo en un sistema práctico y altamente efectivo. Génesis comprende los retos reales del ciclista y ofrece un enfoque directo, estratégico y orientado a resultados medibles.
+        </p>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="num">400+</div>
+            <div class="lab">Ciclistas atendidos</div>
+          </div>
+          <div class="stat">
+            <div class="num">3+</div>
+            <div class="lab">Años de validación en ruta</div>
+          </div>
+          <div class="stat">
+            <div class="num">100%</div>
+            <div class="lab">Enfoque en ciclismo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <div>
+        <h2>Preguntas frecuentes</h2>
+        <p class="section-sub">Toca cada pregunta para ver la respuesta.</p>
+      </div>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          ¿Cuánto tiempo necesito para ver resultados?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            La mayoría de ciclistas nota cambios en energía y rendimiento desde las primeras <strong>2–3 semanas</strong>. La pérdida de grasa y mejoras más marcadas se ven entre <strong>8 y 16 semanas</strong>, dependiendo del caso.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          ¿Esto es lo mismo que una consulta de nutrición?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No, esto no es simplemente una consulta de nutrición, que suele ser una visita mensual con una dieta general y sin seguimiento continuo. Esto es más que una consulta, es un <strong>proceso personalizado de varios meses</strong> que toma en cuenta tu estilo de vida, tus entrenamientos y tu caso específico, enfocado 100% en ciclismo.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          ¿Solo nutrición o también entrenamiento?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            El grueso del programa es la nutrición, pero si no tienes entrenador, también te ayudaremos a estructurarte entrenamientos según tu tiempo y nivel, por medio de una aplicación llamada <strong>Training Peaks</strong> que se sincronizará a tu ciclocomputador.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          ¿Cuál es el precio del programa?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            El precio del programa se adapta a tus necesidades y objetivos, ofreciendo un enfoque personalizado para garantizar los mejores resultados. Al ser un programa premium, incluye <strong>herramientas avanzadas, soporte continuo y un plan a medida</strong>. En la llamada de evaluación gratuita, revisaremos tus metas y te daremos todos los detalles de costos para que tomes una decisión informada.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          ¿Necesito ser un ciclista profesional para aprovechar este programa?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No necesitas ser un ciclista profesional para aprovechar este programa. Está diseñado para adaptarse a tu nivel actual, sin importar si eres nuevo en el ciclismo o llevas años pedaleando y compites. Nos enfocamos en ofrecerte las herramientas y estrategias que necesitas para alcanzar tus metas, sea cual sea tu experiencia: <strong>esto es personalizado</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          ¿Cómo se realizan mediciones si el programa es virtual?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Contamos con herramientas y técnicas probadas para evaluar tu progreso de manera virtual, que nos han dado excelentes resultados durante más de 3 años. Esto incluye <strong>InBody, uso de fotografías, medición de circunferencia abdominal, control de peso y comunicación continua</strong> mediante llamadas y chat. Gracias a este enfoque, hemos logrado grandes resultados con nuestros clientes sin tener que disponer tiempo para trasladarse a otro lugar.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          ¿Debo comprar alimentos o suplementos adicionales?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No, no es necesario comprar alimentos o suplementos especiales o adicionales. Uno de los pilares de nuestro método es la <strong>adaptabilidad</strong>. Creamos un plan de alimentación que se ajusta a tus hábitos actuales y a lo que comúnmente consumes. La idea no es que cambies drásticamente tu alimentación, sino que optimices lo que ya comes y lo ajustes para lograr tus objetivos. Por supuesto, te daremos recomendaciones y orientación sobre alimentos y suplementos que podrían beneficiarte, pero siempre dentro del contexto de tu estilo de vida y tus preferencias.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          ¿El soporte es individual o grupal?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Tanto las videollamadas de seguimiento como el chat de soporte son <strong>individuales</strong>, garantizando privacidad y atención personalizada a tus necesidades y consultas.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          ¿Necesito entrenar más horas para avanzar?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No. El Método Vatio se enfoca en <strong>optimizar tu rendimiento con las horas que ya entrenas</strong>, ajustando la estrategia nutricional y de recuperación para mejorar potencia, energía y composición corporal.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-num">05</div>
+      <div>
+        <h2>Testimonios de ciclistas que aplicaron el Método Vatio</h2>
+      </div>
+    </div>
+
+    <p class="testi-intro">
+      Resultados reales de ciclistas que siguieron el programa: pérdida de grasa, mejoras de potencia y cambios sostenibles en su rutina.
+    </p>
+
+    <div class="testi-video-grid">
+      <div class="testi-video">
+        <div class="video-frame">
+          <!-- ESPACIO PARA VIDEO: Steven -->
+          <div class="video-placeholder">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="meta">Reproducir testimonio</div>
+          </div>
+        </div>
+        <div class="testi-video-name">Steven</div>
+        <div class="testi-video-result">Mejoró su ritmo cardíaco y rendimiento mientras perdía grasa</div>
+      </div>
+
+      <div class="testi-video">
+        <div class="video-frame">
+          <!-- ESPACIO PARA VIDEO: testimonio adicional -->
+          <div class="video-placeholder">
+            <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="meta">Reproducir testimonio</div>
+          </div>
+        </div>
+        <div class="testi-video-name">Próximo testimonio</div>
+        <div class="testi-video-result">Espacio reservado para video adicional</div>
+      </div>
+    </div>
+
+    <!-- WALL OF TEXT TESTIMONIALS -->
+    <div class="testi-wall">
+      <div class="testi-card" data-full="assets/testimonio-giovanni.jpg">
+        <img src="assets/testimonio-giovanni.jpg" alt="Giovanni perdió 2 kg en 2 semanas">
+        <div class="tag">Giovanni · -2 kg en 2 semanas</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-daniela.jpg">
+        <img src="assets/testimonio-daniela.jpg" alt="Daniela logró controlar su ansiedad">
+        <div class="tag">Daniela · Controló su ansiedad alimentaria</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-cristian.jpg">
+        <img src="assets/testimonio-cristian.jpg" alt="Cristian aprendió a comer en un fondo">
+        <div class="tag">Cristian · Nutrición en fondos largos</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-alex.jpg">
+        <img src="assets/testimonio-alex.jpg" alt="Alex aumentó su potencia en 2 semanas">
+        <div class="tag">Alex · +Potencia en 2 semanas</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-andrea.jpg">
+        <img src="assets/testimonio-andrea.jpg" alt="Andrea Herrera está feliz con el método">
+        <div class="tag">Andrea · Enfoque 100% ciclismo</div>
+      </div>
+    </div>
+
+    <div class="team-mosaic">
+      <div class="team-mosaic-tag">Equipo Método Vatio</div>
+      <div class="mosaic-grid">
+        <div class="mosaic-item big" data-full="assets/team-3.jpg">
+          <img src="assets/team-3.jpg" alt="Equipo Método Vatio con medallas en competencia">
+        </div>
+        <div class="mosaic-item" data-full="assets/team-1.jpg">
+          <img src="assets/team-1.jpg" alt="Pareja de ciclistas con medalla, equipo Método Vatio">
+        </div>
+        <div class="mosaic-item" data-full="assets/team-2.jpg">
+          <img src="assets/team-2.jpg" alt="Ciclistas del equipo Método Vatio abrazados">
+        </div>
+        <div class="mosaic-item tall" data-full="assets/team-4.jpg">
+          <img src="assets/team-4.jpg" alt="Ciclista del equipo Método Vatio con casco y lentes">
+        </div>
+      </div>
+      <p class="team-mosaic-cap">Resultados en competencia, validados en ruta — el equipo que vive el Método Vatio cada semana.</p>
+    </div>
+  </section>
+
+  <!-- CHECKLIST INTERACTIVO -->
+  <section class="reveal">
+    <div class="section-head">
+      <div class="section-num">06</div>
+      <div>
+        <h2>Tu checklist antes de la llamada</h2>
+        <p class="section-sub">Marca cada punto a medida que lo completes. Te ayudará a llegar a la sesión con total claridad.</p>
+      </div>
+    </div>
+
+    <div class="checklist" id="checklist">
+      <div class="check-item" data-key="c1">
+        <div class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#FBFAF7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+        <div class="check-text">Vi el video completo de 8 minutos</div>
+      </div>
+      <div class="check-item" data-key="c2">
+        <div class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#FBFAF7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+        <div class="check-text">Tengo Zoom instalado y un espacio tranquilo de 45–60 min</div>
+      </div>
+      <div class="check-item" data-key="c3">
+        <div class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#FBFAF7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+        <div class="check-text">Revisé mi correo y WhatsApp para el enlace</div>
+      </div>
+      <div class="check-item" data-key="c4">
+        <div class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#FBFAF7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+        <div class="check-text">Leí las preguntas frecuentes</div>
+      </div>
+      <div class="check-item" data-key="c5">
+        <div class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#FBFAF7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+        <div class="check-text">Tengo claro mi objetivo principal con el ciclismo</div>
+      </div>
+    </div>
+
+    <div class="check-progress">
+      <div class="check-bar"><div class="check-bar-fill" id="checkFill"></div></div>
+      <div class="check-progress-label" id="checkLabel">0 / 5 listos</div>
+    </div>
+  </section>
+
+  <footer class="reveal">
+    <div class="footer-quote">
+      "La alimentación es nuestro combustible. <span>Hay que cumplir con el plan</span> — los resultados se notarán al final del fondo."
+    </div>
+    <div class="footer-meta">Método Vatio · Nutrición en Ciclismo · Génesis Ceciliano</div>
+  </footer>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose">✕</div>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    const inner = item.querySelector('.faq-a-inner');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other => {
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        a.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        a.style.maxHeight = inner.offsetHeight + 'px';
+      }
+    });
+  });
+
+  // Checklist
+  const checkItems = document.querySelectorAll('.check-item');
+  const fill = document.getElementById('checkFill');
+  const label = document.getElementById('checkLabel');
+  const total = checkItems.length;
+
+  function updateProgress(){
+    const done = document.querySelectorAll('.check-item.done').length;
+    fill.style.width = (done/total*100) + '%';
+    label.textContent = done + ' / ' + total + ' listos';
+  }
+
+  checkItems.forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('done');
+      updateProgress();
+    });
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.testi-card, .mosaic-item').forEach(card => {
+    card.addEventListener('click', () => {
+      lightboxImg.src = card.dataset.full;
+      lightbox.classList.add('active');
+    });
+  });
+  document.querySelectorAll('.mosaic-item, .testi-card').forEach(card => {
+    card.style.cursor = 'zoom-in';
+  });
+  document.getElementById('lightboxClose').addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) lightbox.classList.remove('active');
+  });
+
+  // YouTube click-to-play
+  document.querySelectorAll('.yt-frame').forEach(frame => {
+    frame.addEventListener('click', () => {
+      const id = frame.dataset.yt;
+      if(!id) return;
+      const iframe = document.createElement('iframe');
+      iframe.className = 'yt-iframe';
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = 'YouTube video player';
+      iframe.frameBorder = '0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      frame.appendChild(iframe);
+      frame.classList.add('yt-active');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>
