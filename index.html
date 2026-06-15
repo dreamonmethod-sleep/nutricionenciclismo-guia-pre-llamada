@@ -565,7 +565,7 @@
   /* image testimonial wall */
   .testi-wall{
     display:grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin-top: 12px;
   }
@@ -603,7 +603,10 @@
     border: 1px solid var(--line);
     font-weight: 500;
   }
-  @media (max-width: 720px){
+  @media (max-width: 880px){
+    .testi-wall{ grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px){
     .testi-wall{ grid-template-columns: repeat(2, 1fr); }
   }
 
@@ -962,8 +965,8 @@
             <div class="lab">Ciclistas atendidos</div>
           </div>
           <div class="stat">
-            <div class="num">3+</div>
-            <div class="lab">Años de validación en ruta</div>
+            <div class="num">4+</div>
+            <div class="lab">Años de experiencia</div>
           </div>
           <div class="stat">
             <div class="num">100%</div>
@@ -1170,25 +1173,73 @@
 
     <!-- WALL OF TEXT TESTIMONIALS -->
     <div class="testi-wall">
-      <div class="testi-card" data-full="assets/testimonio-giovanni.jpg">
-        <img src="assets/testimonio-giovanni.jpg" alt="Giovanni perdió 2 kg en 2 semanas">
-        <div class="tag">Giovanni · -2 kg en 2 semanas</div>
-      </div>
-      <div class="testi-card" data-full="assets/testimonio-daniela.jpg">
-        <img src="assets/testimonio-daniela.jpg" alt="Daniela logró controlar su ansiedad">
-        <div class="tag">Daniela · Controló su ansiedad alimentaria</div>
-      </div>
-      <div class="testi-card" data-full="assets/testimonio-cristian.jpg">
-        <img src="assets/testimonio-cristian.jpg" alt="Cristian aprendió a comer en un fondo">
-        <div class="tag">Cristian · Nutrición en fondos largos</div>
-      </div>
-      <div class="testi-card" data-full="assets/testimonio-alex.jpg">
-        <img src="assets/testimonio-alex.jpg" alt="Alex aumentó su potencia en 2 semanas">
+      <div class="testi-card" data-full="assets/testimonio-01.jpg">
+        <img src="assets/testimonio-01.jpg" alt="Alex aumentó su potencia en 2 semanas">
         <div class="tag">Alex · +Potencia en 2 semanas</div>
       </div>
-      <div class="testi-card" data-full="assets/testimonio-andrea.jpg">
-        <img src="assets/testimonio-andrea.jpg" alt="Andrea Herrera está feliz con el método">
-        <div class="tag">Andrea · Enfoque 100% ciclismo</div>
+      <div class="testi-card" data-full="assets/testimonio-02.jpg">
+        <img src="assets/testimonio-02.jpg" alt="Andrea Herrera está feliz con el método">
+        <div class="tag">Andrea H. · Enfoque 100% ciclismo</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-03.jpg">
+        <img src="assets/testimonio-03.jpg" alt="Andrea logró sus primeros 140 km">
+        <div class="tag">Andrea · Primeros 140 km en bici</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-04.jpg">
+        <img src="assets/testimonio-04.jpg" alt="Angie tiene mucha más energía">
+        <div class="tag">Angie · Más energía en cada ruta</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-05.jpg">
+        <img src="assets/testimonio-05.jpg" alt="Cristian aprendió a comer en un fondo">
+        <div class="tag">Cristian · Nutrición en fondos largos</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-06.jpg">
+        <img src="assets/testimonio-06.jpg" alt="Daniela logró controlar su ansiedad">
+        <div class="tag">Daniela · Controló su ansiedad alimentaria</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-07.jpg">
+        <img src="assets/testimonio-07.jpg" alt="Daniela perdió 4 kg">
+        <div class="tag">Daniela · -4 kg con el método</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-08.jpg">
+        <img src="assets/testimonio-08.jpg" alt="Diego disminuyó sus calambres">
+        <div class="tag">Diego · Sin calambres en ruta</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-09.jpg">
+        <img src="assets/testimonio-09.jpg" alt="Giovanni perdió 2 kg en 2 semanas">
+        <div class="tag">Giovanni · -2 kg en 2 semanas</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-10.jpg">
+        <img src="assets/testimonio-10.jpg" alt="Testimonio David, resultados con el programa de nutrición">
+        <div class="tag">David · Resultados en 2 meses</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-11.jpg">
+        <img src="assets/testimonio-11.jpg" alt="Testimonio Johana y Adriana, metas cumplidas">
+        <div class="tag">Johana · Meta de peso cumplida</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-12.jpg">
+        <img src="assets/testimonio-12.jpg" alt="Testimonio Armando Toro, mejoras en rendimiento">
+        <div class="tag">Armando · +100% rendimiento en bici</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-13.jpg">
+        <img src="assets/testimonio-13.jpg" alt="Testimonio Grace, mejor rendimiento en ciclismo y hiking">
+        <div class="tag">Grace · Más energía y rendimiento</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-14.jpg">
+        <img src="assets/testimonio-14.jpg" alt="Testimonio Carlos Viquez, acompañamiento desde el día 1">
+        <div class="tag">Carlos · Acompañamiento desde el día 1</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-15.jpg">
+        <img src="assets/testimonio-15.jpg" alt="Testimonio Rafael Arias, hidratación personalizada">
+        <div class="tag">Rafael · Hidratación a su medida</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-16.jpg">
+        <img src="assets/testimonio-16.jpg" alt="Testimonio Jeremy Jimenez, conocimiento real y comunidad">
+        <div class="tag">Jeremy · Conocimiento real y comunidad</div>
+      </div>
+      <div class="testi-card" data-full="assets/testimonio-17.jpg">
+        <img src="assets/testimonio-17.jpg" alt="Testimonio Henry Correa, mejor energía y rendimiento">
+        <div class="tag">Henry · Más energía y rendimiento</div>
       </div>
     </div>
 
@@ -1208,7 +1259,6 @@
           <img src="assets/team-4.jpg" alt="Ciclista del equipo Método Vatio con casco y lentes">
         </div>
       </div>
-      <p class="team-mosaic-cap">Resultados en competencia, validados en ruta — el equipo que vive el Método Vatio cada semana.</p>
     </div>
   </section>
 
@@ -1253,7 +1303,7 @@
 
   <footer class="reveal">
     <div class="footer-quote">
-      "La alimentación es nuestro combustible. <span>Hay que cumplir con el plan</span> — los resultados se notarán al final del fondo."
+      "La alimentación es nuestro combustible. <span>Nos vemos en la llamada.</span>"
     </div>
     <div class="footer-meta">Método Vatio · Nutrición en Ciclismo · Génesis Ceciliano</div>
   </footer>
